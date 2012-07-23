@@ -33,25 +33,25 @@ module MineSweeper
 
     def score_position(x, y)
       score = 0
+      mine = '*'
 
       # If we have a mine in the position then return immediately
-      return '*' if @field[x][y] == '*'
+      return mine if @field[x][y] == mine
 
 
       unless (@field[x-1].nil?)
-        score += 1 if @field[x-1][y-1] == '*' and y-1 >= 0 and x-1 >= 0
-        score += 1 if @field[x-1][y] == '*' and x-1 >= 0
-        score += 1 if @field[x-1][y+1] == '*' and x-1 >= 0
+        score += 1 if @field[x-1][y-1] == mine and y-1 >= 0 and x-1 >= 0
+        score += 1 if @field[x-1][y] == mine and x-1 >= 0
+        score += 1 if @field[x-1][y+1] == mine and x-1 >= 0
       end
 
-      score += 1 if @field[x][y-1] == '*' and y-1 >= 0
-      score += 1 if @field[x][y] == '*'
-      score += 1 if @field[x][y+1] == '*'
+      score += 1 if @field[x][y-1] == mine and y-1 >= 0
+      score += 1 if @field[x][y+1] == mine
 
       unless (@field[x+1].nil?)
-        score += 1 if @field[x+1][y-1] == '*' and y-1 >= 0
-        score += 1 if @field[x+1][y] == '*'
-        score += 1 if @field[x+1][y+1] == '*'
+        score += 1 if @field[x+1][y-1] == mine and y-1 >= 0
+        score += 1 if @field[x+1][y] == mine
+        score += 1 if @field[x+1][y+1] == mine
       end
 
       score
